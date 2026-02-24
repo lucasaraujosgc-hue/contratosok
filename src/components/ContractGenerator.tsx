@@ -391,56 +391,60 @@ export default function ContractGenerator() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4 }}
-            className="max-w-[210mm] mx-auto bg-white shadow-xl print:shadow-none print:max-w-none min-h-[297mm] p-[20mm] text-justify text-[11pt] leading-relaxed font-serif text-slate-900 border border-slate-200 print:border-none" 
+            className="max-w-[210mm] mx-auto bg-white shadow-xl print:shadow-none print:max-w-none min-h-[297mm] text-justify text-[11pt] leading-relaxed font-serif text-slate-900 border border-slate-200 print:border-none relative" 
             ref={printRef}
           >
-            
-            {/* Watermark */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 opacity-[0.08] select-none overflow-hidden print:fixed print:inset-0 print:opacity-[0.06] print:z-[-1]">
-              <div className="flex items-center space-x-6 transform -rotate-12 scale-[2]">
-                <div className="w-24 h-24 bg-virgula-card rounded-2xl border border-slate-200 flex items-center justify-center text-virgula-green">
-                  <Calculator size={56} />
+            {/* Sidebar Decoration */}
+            <div className="absolute left-0 top-0 bottom-0 w-2 bg-virgula-green print:w-2 print:bg-virgula-green h-full"></div>
+            <div className="absolute left-2 top-0 bottom-0 w-1 bg-virgula-card print:w-1 print:bg-virgula-card h-full"></div>
+
+            <div className="p-[20mm] pl-[30mm]">
+              <div className="text-center mb-12 relative">
+                <div className="absolute top-0 right-0 opacity-10">
+                  <Calculator size={64} className="text-virgula-card" />
                 </div>
-                <div className="flex flex-col justify-center">
-                  <span className="text-6xl font-bold text-virgula-card tracking-tight leading-none mb-1">Vírgula</span>
-                  <span className="text-2xl font-semibold text-virgula-green tracking-widest leading-none uppercase">Contábil</span>
-                </div>
+                <h1 className="font-bold text-2xl uppercase tracking-wide text-virgula-card border-b-4 border-virgula-green pb-4 inline-block">
+                  Contrato de Prestação de Serviços Contábeis
+                </h1>
               </div>
-            </div>
 
-            <div className="relative z-10">
-            <div className="text-center mb-10">
-              <h1 className="font-bold text-lg uppercase tracking-wide border-b-2 border-black pb-2 inline-block">Contrato de Prestação de Serviços Contábeis</h1>
-            </div>
-
-            <div className="space-y-6">
+              <div className="space-y-8">
               <p>
                 Pelo presente instrumento particular de Contrato de Prestação de Serviços Contábeis, de um lado <strong>{data.clientName || "_______________________"}</strong>, inscrita no CNPJ/CPF sob o nº {data.clientCNPJ || "_______________________"}, com sede em {data.clientAddress || "_______________________"}, doravante denominada <strong>CONTRATANTE</strong>, neste ato representada por seu representante legal, <strong>{data.clientRepresentative || "_______________________"}</strong>, portador do CPF/CNPJ nº {data.clientRepDoc || "_______________________"}.
               </p>
               
               <p>
-                E, de outro lado, o profissional da Contabilidade <strong>{selectedContractor.name}</strong>, {selectedContractor.doc}, registrado no {selectedContractor.registry}, residente/sediado na {selectedContractor.address}, doravante denominado(a) <strong>CONTRATADO(A)</strong>, mediante as cláusulas e condições seguintes, tem justo e contratado que se segue:
+                E, de outro lado, o profissional da Contabilidade <strong>{selectedContractor.name}</strong>, {selectedContractor.doc}, registrado no {selectedContractor.registry}, sediado na {selectedContractor.address}, doravante denominado(a) <strong>CONTRATADO(A)</strong>, mediante as cláusulas e condições seguintes, tem justo e contratado que se segue:
               </p>
 
-              <div>
-                <h2 className="font-bold text-sm uppercase mb-2">Cláusula Primeira – Do Objeto</h2>
+              <div className="bg-slate-50 p-6 rounded-lg border-l-4 border-virgula-card print:bg-transparent print:p-0 print:border-none">
+                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                  Cláusula Primeira – Do Objeto
+                </h2>
                 <p>
                   O profissional contratado obriga-se a prestar seus serviços profissionais ao contratante, nas seguintes áreas:
                 </p>
-                <div className="mt-2 pl-4 border-l-2 border-slate-300 italic text-slate-700 bg-slate-50 p-2 print:bg-transparent print:p-0 whitespace-pre-line">
+                <div className="mt-4 pl-4 border-l-2 border-virgula-green italic text-slate-700 bg-white p-4 rounded shadow-sm print:shadow-none print:bg-transparent print:p-0 whitespace-pre-line">
                   {data.serviceScope}
                 </div>
               </div>
 
               <div>
-                <h2 className="font-bold text-sm uppercase mb-2">Cláusula Segunda – Das Responsabilidades</h2>
+                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                  Cláusula Segunda – Das Responsabilidades
+                </h2>
                 <p>
                   O(A) contratado(a) assume inteira responsabilidade pelos serviços técnicos a que se obrigou, assim como pelas orientações que prestar.
                 </p>
               </div>
 
               <div>
-                <h2 className="font-bold text-sm uppercase mb-2">Cláusula Terceira – Das Obrigações da Contratante</h2>
+                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                  Cláusula Terceira – Das Obrigações da Contratante
+                </h2>
                 <p>
                   A CONTRATANTE obriga-se a fornecer à CONTRATADA toda a documentação e informações necessárias para a execução dos serviços, dentro dos prazos estabelecidos, responsabilizando-se pela veracidade e legalidade dos documentos entregues.
                 </p>
@@ -462,21 +466,30 @@ do Conselho Federal de Contabilidade.
               </div>
 
               <div>
-                <h2 className="font-bold text-sm uppercase mb-2">Cláusula Quarta – Da Carta de Responsabilidade</h2>
+                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                  Cláusula Quarta – Da Carta de Responsabilidade
+                </h2>
                 <p>
                   O(A) contratante(a) se obriga, antes do encerramento do exercício social, a fornecer ao contratado(a) a Carta de Responsabilidade da Administração.
                 </p>
               </div>
 
               <div>
-                <h2 className="font-bold text-sm uppercase mb-2">Cláusula Quinta – Das Orientações</h2>
+                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                  Cláusula Quinta – Das Orientações
+                </h2>
                 <p>
                   As orientações dadas pelo(a) contratado(a) deverão ser seguidas pela contratante, eximindo-se o(a) primeiro(a) das consequências da não observância do seu cumprimento.
                 </p>
               </div>
 
               <div>
-                <h2 className="font-bold text-sm uppercase mb-2">Cláusula Sexta – Da Entrega de Documentos</h2>
+                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                  Cláusula Sexta – Da Entrega de Documentos
+                </h2>
                 <p>
                   O(A) contratado(a) se obriga a entregar ao contratante, mediante protocolo, com tempo hábil, os balancetes, o Balanço Patrimonial e as demais demonstrações contábeis, documentos necessários para que este efetue os devidos pagamentos e recolhimentos obrigatórios, bem como comprovante de entrega das obrigações acessórias.
                 </p>
@@ -486,38 +499,53 @@ do Conselho Federal de Contabilidade.
                 </p>
               </div>
 
-              <div>
-                <h2 className="font-bold text-sm uppercase mb-2">Cláusula Sétima – Dos Honorários</h2>
+              <div className="bg-slate-50 p-6 rounded-lg border-l-4 border-virgula-card print:bg-transparent print:p-0 print:border-none">
+                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                  Cláusula Sétima – Dos Honorários
+                </h2>
                 <p>{formatClause(data.clause7)}</p>
                 
-                <p className="mt-2 font-bold text-xs uppercase">Parágrafo Primeiro:</p>
+                <p className="mt-2 font-bold text-xs uppercase text-virgula-card/80">Parágrafo Primeiro:</p>
                 <p>{data.clause7Para1}</p>
                 
-                <p className="mt-2 font-bold text-xs uppercase">Parágrafo Segundo:</p>
+                <p className="mt-2 font-bold text-xs uppercase text-virgula-card/80">Parágrafo Segundo:</p>
                 <p>{data.clause7Para2}</p>
               </div>
 
               <div>
-                <h2 className="font-bold text-sm uppercase mb-2">Cláusula Oitava – Do 13º Honorário</h2>
+                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                  Cláusula Oitava – Do 13º Honorário
+                </h2>
                 <p>{data.clause8}</p>
               </div>
 
               <div>
-                <h2 className="font-bold text-sm uppercase mb-2">Cláusula Nona – Dos Serviços Extraordinários</h2>
+                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                  Cláusula Nona – Dos Serviços Extraordinários
+                </h2>
                 <p>
                   Todos os serviços extraordinários não contratados que forem necessários ou solicitados pelo contratante serão cobrados à parte, com preços previamente convencionados.
                 </p>
               </div>
 
               <div>
-                <h2 className="font-bold text-sm uppercase mb-2">Cláusula Décima – Da Rescisão</h2>
+                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                  Cláusula Décima – Da Rescisão
+                </h2>
                 <p>
                   No caso de atraso no pagamento dos honorários, incidirá multa de 10%. Persistindo o atraso, por período de 3 (três) meses, o contratado(a) poderá rescindir o contrato, por motivo justificado, eximindo-se de qualquer responsabilidade a partir da data da rescisão.
                 </p>
               </div>
 
               <div>
-                <h2 className="font-bold text-sm uppercase mb-2">Cláusula Décima Primeira – Do Prazo</h2>
+                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                  Cláusula Décima Primeira – Do Prazo
+                </h2>
                 <p>
                   Este instrumento é feito por tempo indeterminado, iniciando-se em <strong>{new Date(data.startDate).toLocaleDateString('pt-BR')}</strong>, podendo ser rescindido em qualquer época, por qualquer uma das partes, mediante Aviso Prévio de 30 (trinta) dias, por escrito.
                 </p>
@@ -536,61 +564,70 @@ do Conselho Federal de Contabilidade.
               </div>
 
               <div>
-                <h2 className="font-bold text-sm uppercase mb-2">Cláusula Décima Segunda – Do Foro</h2>
+                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                  Cláusula Décima Segunda – Do Foro
+                </h2>
                 <p>
                   Os casos omissos serão resolvidos de comum acordo.
                 </p>
-                <p className="mt-2 font-bold text-xs uppercase">Parágrafo Único:</p>
+                <p className="mt-2 font-bold text-xs uppercase text-virgula-card/80">Parágrafo Único:</p>
                 <p>
                   Em caso de impasse, as partes submeterão a solução do conflito a procedimento arbitral nos termos da Lei n.º 9.307/96.
                 </p>
               </div>
 
-              <p className="text-right mt-8 mb-16">
+              <p className="text-right mt-12 mb-20 italic text-slate-600">
                 {data.city}, {new Date().toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' })}.
               </p>
 
               <div className="grid grid-cols-2 gap-12 mt-20 break-inside-avoid">
                 <div className="text-center">
-                  <div className="border-t border-black pt-2 mb-1 mx-4">
+                  <div className="border-t-2 border-virgula-card pt-2 mb-1 mx-4">
                     {data.clientRepresentative || "CONTRATANTE"}
                   </div>
-                  <div className="text-xs uppercase">
+                  <div className="text-xs uppercase font-bold text-virgula-card">
                     {data.clientName}<br/>
                     Rep. Legal
                   </div>
                 </div>
                 <div className="text-center">
-                  <div className="border-t border-black pt-2 mb-1 mx-4">
+                  <div className="border-t-2 border-virgula-card pt-2 mb-1 mx-4">
                     {selectedContractor.name}
                   </div>
-                  <div className="text-xs uppercase">Contratado</div>
+                  <div className="text-xs uppercase font-bold text-virgula-card">Contratado</div>
                 </div>
               </div>
 
               {/* ANEXO I - Page Break */}
-              <div className="break-before-page mt-20">
-                <div className="text-center mb-10">
-                  <h1 className="font-bold text-lg uppercase tracking-wide border-b-2 border-black pb-2 inline-block">ANEXO I - Prazos e Obrigações</h1>
+              <div className="break-before-page mt-20 relative">
+                {/* Sidebar Decoration for Annex */}
+                <div className="absolute -left-[30mm] -top-[20mm] -bottom-[20mm] w-2 bg-virgula-green h-[calc(100%+40mm)] print:h-[297mm] print:-top-[20mm]"></div>
+                <div className="absolute -left-[28mm] -top-[20mm] -bottom-[20mm] w-1 bg-virgula-card h-[calc(100%+40mm)] print:h-[297mm] print:-top-[20mm]"></div>
+
+                <div className="text-center mb-12">
+                  <h1 className="font-bold text-2xl uppercase tracking-wide text-virgula-card border-b-4 border-virgula-green pb-4 inline-block">
+                    ANEXO I - Prazos e Obrigações
+                  </h1>
                 </div>
                 
-                <p className="mb-6">
+                <p className="mb-8 text-lg">
                   Relação de documentos e informações a serem fornecidos pela CONTRATANTE à CONTRATADA, com seus respectivos prazos:
                 </p>
 
-                <div className="border border-slate-900">
-                  <div className="grid grid-cols-3 bg-slate-100 border-b border-slate-900 font-bold text-sm print:bg-gray-200">
-                    <div className="col-span-2 p-2 border-r border-slate-900">Obrigação / Documento</div>
-                    <div className="p-2">Prazo de Entrega</div>
+                <div className="border-2 border-virgula-card rounded-lg overflow-hidden">
+                  <div className="grid grid-cols-3 bg-virgula-card text-white font-bold text-sm print:bg-virgula-card print:text-white">
+                    <div className="col-span-2 p-3 border-r border-virgula-green">Obrigação / Documento</div>
+                    <div className="p-3">Prazo de Entrega</div>
                   </div>
                   {data.obligations.map((obs) => (
-                    <div key={obs.id} className="grid grid-cols-3 border-b border-slate-900 last:border-0 text-sm">
-                      <div className="col-span-2 p-2 border-r border-slate-900">{obs.description}</div>
-                      <div className="p-2">{obs.deadline}</div>
+                    <div key={obs.id} className="grid grid-cols-3 border-b border-slate-200 last:border-0 text-sm hover:bg-slate-50 transition-colors">
+                      <div className="col-span-2 p-3 border-r border-slate-200">{obs.description}</div>
+                      <div className="p-3 font-medium text-virgula-card">{obs.deadline}</div>
                     </div>
                   ))}
                   {data.obligations.length === 0 && (
-                    <div className="p-4 text-center italic text-slate-500">Nenhuma obrigação listada.</div>
+                    <div className="p-6 text-center italic text-slate-500">Nenhuma obrigação listada.</div>
                   )}
                 </div>
               </div>
