@@ -93,7 +93,7 @@ bem como daqueles atinentes à Previdência Social e de outros aplicáveis às r
 mantidas pela contratante`,
   monthlyFee: "1.500,00",
   startDate: new Date().toISOString().split('T')[0],
-  contractDuration: "12 (doze) meses",
+  contractDuration: "Indeterminado",
   city: "São Gonçalo dos Campos",
   
   clause7: "O(A) contratante pagará ao contratado(a) pelos serviços prestados os honorários mensais de R$ [VALOR], com vencimento em até o quinto dia util do mês subsequente.",
