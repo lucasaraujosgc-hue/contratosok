@@ -217,39 +217,45 @@ export default function ContractGenerator() {
   return (
     <div className="min-h-screen bg-slate-100 flex flex-col font-sans text-slate-900 print:bg-white">
       {/* Header - Hidden on Print */}
-      <header className="bg-slate-900 border-b border-slate-800 px-6 py-4 flex items-center justify-between print:hidden sticky top-0 z-20 shadow-sm">
-        <div className="flex items-center space-x-4 cursor-pointer">
-          <div className="w-12 h-12 bg-virgula-card rounded-xl border border-white/10 flex items-center justify-center text-virgula-green shadow-[0_0_20px_rgba(16,185,129,0.25)]">
-            <Calculator size={30} />
+      <header className="bg-white px-6 pt-4 pb-0 flex flex-col print:hidden sticky top-0 z-20 shadow-sm">
+        <div className="flex items-center justify-between pb-4">
+          <div className="flex items-center space-x-4 cursor-pointer">
+            <div className="w-12 h-12 bg-virgula-card rounded-xl border border-white/10 flex items-center justify-center text-virgula-green shadow-[0_0_20px_rgba(16,185,129,0.25)]">
+              <Calculator size={30} />
+            </div>
+            <div className="flex flex-col justify-center">
+              <span className="text-3xl font-bold text-slate-900 tracking-tight leading-none mb-0.5">Vírgula</span>
+              <span className="text-base font-semibold text-virgula-green tracking-widest leading-none uppercase">Contábil</span>
+            </div>
           </div>
-          <div className="flex flex-col justify-center">
-            <span className="text-3xl font-bold text-white tracking-tight leading-none mb-0.5">Vírgula</span>
-            <span className="text-base font-semibold text-virgula-green tracking-widest leading-none uppercase">Contábil</span>
+          <div className="flex gap-3">
+            <button 
+              onClick={handleSave}
+              disabled={isSaving}
+              className="flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors text-sm font-medium disabled:opacity-50"
+            >
+              <Save size={16} />
+              <span className="hidden sm:inline">{isSaving ? 'Salvando...' : 'Salvar'}</span>
+            </button>
+            <button 
+              onClick={handleReset}
+              className="flex items-center gap-2 px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors text-sm font-medium"
+            >
+              <RefreshCw size={16} />
+              <span className="hidden sm:inline">Limpar</span>
+            </button>
+            <button 
+              onClick={handlePrint}
+              className="flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-all shadow-md hover:shadow-lg text-sm font-medium"
+            >
+              <Printer size={16} />
+              <span className="hidden sm:inline">Imprimir</span>
+            </button>
           </div>
         </div>
-        <div className="flex gap-3">
-          <button 
-            onClick={handleSave}
-            disabled={isSaving}
-            className="flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors text-sm font-medium disabled:opacity-50"
-          >
-            <Save size={16} />
-            <span className="hidden sm:inline">{isSaving ? 'Salvando...' : 'Salvar'}</span>
-          </button>
-          <button 
-            onClick={handleReset}
-            className="flex items-center gap-2 px-4 py-2 text-slate-300 hover:bg-white/10 rounded-lg transition-colors text-sm font-medium"
-          >
-            <RefreshCw size={16} />
-            <span className="hidden sm:inline">Limpar</span>
-          </button>
-          <button 
-            onClick={handlePrint}
-            className="flex items-center gap-2 px-4 py-2 bg-white text-slate-900 rounded-lg hover:bg-slate-100 transition-all shadow-md hover:shadow-lg text-sm font-medium"
-          >
-            <Printer size={16} />
-            <span className="hidden sm:inline">Imprimir</span>
-          </button>
+        <div className="w-full">
+          <div className="h-1.5 bg-virgula-card w-full"></div>
+          <div className="h-0.5 bg-virgula-green w-full mt-0.5"></div>
         </div>
       </header>
 
@@ -400,15 +406,19 @@ export default function ContractGenerator() {
                 <tr>
                   <th className="border-none p-0 font-normal text-left">
                     {/* Repeating Header */}
-                    <div className="bg-slate-900 border-b border-slate-800 px-6 py-4 flex items-center justify-between mb-6 print:mb-6">
-                      <div className="flex items-center space-x-4">
+                    <div className="bg-white pt-6 pb-2 mb-6 print:mb-6">
+                      <div className="flex items-center space-x-4 px-[15mm]">
                         <div className="w-12 h-12 bg-virgula-card rounded-xl border border-white/10 flex items-center justify-center text-virgula-green shadow-[0_0_20px_rgba(16,185,129,0.25)]">
                           <Calculator size={30} />
                         </div>
                         <div className="flex flex-col justify-center">
-                          <span className="text-3xl font-bold text-white tracking-tight leading-none mb-0.5">Vírgula</span>
+                          <span className="text-3xl font-bold text-slate-900 tracking-tight leading-none mb-0.5">Vírgula</span>
                           <span className="text-base font-semibold text-virgula-green tracking-widest leading-none uppercase">Contábil</span>
                         </div>
+                      </div>
+                      <div className="mt-4 w-full">
+                        <div className="h-1.5 bg-virgula-card w-full"></div>
+                        <div className="h-0.5 bg-virgula-green w-full mt-0.5"></div>
                       </div>
                     </div>
                   </th>
