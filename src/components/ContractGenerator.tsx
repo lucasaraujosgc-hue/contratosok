@@ -386,47 +386,44 @@ export default function ContractGenerator() {
         </aside>
 
         {/* Preview Area */}
-        <div className="flex-1 bg-slate-100/50 p-8 overflow-y-auto print:p-0 print:bg-white print:overflow-visible custom-scrollbar">
+        <div className="flex-1 bg-slate-100/50 p-4 sm:p-8 overflow-y-auto print:p-0 print:bg-white print:overflow-visible custom-scrollbar">
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4 }}
-            className="max-w-[210mm] mx-auto bg-white shadow-xl print:shadow-none print:max-w-none min-h-[297mm] text-justify text-[11pt] leading-relaxed font-serif text-slate-900 border border-slate-200 print:border-none relative" 
+            className="max-w-[210mm] mx-auto bg-white shadow-xl print:shadow-none print:max-w-none min-h-[297mm] text-justify text-[10pt] leading-normal font-sans text-slate-900 border border-slate-200 print:border-none relative overflow-hidden print:overflow-visible" 
             ref={printRef}
+            style={{ WebkitPrintColorAdjust: 'exact', printColorAdjust: 'exact' }}
           >
-            {/* Sidebar Decoration */}
-            <div className="absolute left-0 top-0 bottom-0 w-2 bg-virgula-green print:w-2 print:bg-virgula-green h-full z-0"></div>
-            <div className="absolute left-2 top-0 bottom-0 w-1 bg-virgula-card print:w-1 print:bg-virgula-card h-full z-0"></div>
-
-            {/* Repeating Header (Fixed in Print) */}
-            <div className="absolute top-[15mm] right-[20mm] print:fixed print:top-[15mm] print:right-[20mm] z-50">
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-virgula-card rounded-xl border border-slate-200 flex items-center justify-center text-virgula-green shadow-sm">
-                  <Calculator size={30} />
-                </div>
-                <div className="flex flex-col justify-center">
-                  <span className="text-3xl font-bold text-virgula-card tracking-tight leading-none mb-0.5">Vírgula</span>
-                  <span className="text-base font-semibold text-virgula-green tracking-widest leading-none uppercase">Contábil</span>
-                </div>
-              </div>
-            </div>
-
             <table className="w-full border-collapse relative z-10">
               <thead className="table-header-group">
                 <tr>
-                  <th className="h-[35mm] print:h-[40mm] border-none p-0"></th>
+                  <th className="border-none p-0 font-normal text-left">
+                    {/* Repeating Header */}
+                    <div className="bg-slate-900 border-b border-slate-800 px-6 py-4 flex items-center justify-between mb-6 print:mb-6">
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-virgula-card rounded-xl border border-white/10 flex items-center justify-center text-virgula-green shadow-[0_0_20px_rgba(16,185,129,0.25)]">
+                          <Calculator size={30} />
+                        </div>
+                        <div className="flex flex-col justify-center">
+                          <span className="text-3xl font-bold text-white tracking-tight leading-none mb-0.5">Vírgula</span>
+                          <span className="text-base font-semibold text-virgula-green tracking-widest leading-none uppercase">Contábil</span>
+                        </div>
+                      </div>
+                    </div>
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td className="p-[20mm] pl-[30mm] pt-0 border-none align-top">
-                    <div className="text-center mb-12 relative">
-                      <h1 className="font-bold text-2xl uppercase tracking-wide text-virgula-card border-b-4 border-virgula-green pb-4 inline-block">
+                  <td className="px-[15mm] pb-[15mm] pt-0 border-none align-top">
+                    <div className="text-center mb-8 relative">
+                      <h1 className="font-bold text-xl uppercase tracking-wide text-virgula-card border-b-2 border-virgula-green pb-2 inline-block">
                         Contrato de Prestação de Serviços Contábeis
                       </h1>
                     </div>
 
-                    <div className="space-y-8">
+                    <div className="space-y-5">
                       <p>
                         Pelo presente instrumento particular de Contrato de Prestação de Serviços Contábeis, de um lado <strong>{data.clientName || "_______________________"}</strong>, inscrita no CNPJ/CPF sob o nº {data.clientCNPJ || "_______________________"}, com sede em {data.clientAddress || "_______________________"}, doravante denominada <strong>CONTRATANTE</strong>, neste ato representada por seu representante legal, <strong>{data.clientRepresentative || "_______________________"}</strong>, portador do CPF/CNPJ nº {data.clientRepDoc || "_______________________"}.
                       </p>
@@ -435,21 +432,21 @@ export default function ContractGenerator() {
                         E, de outro lado, o profissional da Contabilidade <strong>{selectedContractor.name}</strong>, {selectedContractor.doc}, registrado no {selectedContractor.registry}, sediado na {selectedContractor.address}, doravante denominado(a) <strong>CONTRATADO(A)</strong>, mediante as cláusulas e condições seguintes, tem justo e contratado que se segue:
                       </p>
 
-                      <div className="bg-slate-50 p-6 rounded-lg border-l-4 border-virgula-card print:bg-transparent print:p-0 print:border-none">
-                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                      <div className="bg-slate-50 p-5 rounded-lg border-l-4 border-virgula-card print:bg-transparent print:p-0 print:border-none">
+                        <h2 className="font-bold text-base uppercase mb-2 text-virgula-card flex items-center gap-2">
                           <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
                           Cláusula Primeira – Do Objeto
                         </h2>
                         <p>
                           O profissional contratado obriga-se a prestar seus serviços profissionais ao contratante, nas seguintes áreas:
                         </p>
-                        <div className="mt-4 pl-4 border-l-2 border-virgula-green italic text-slate-700 bg-white p-4 rounded shadow-sm print:shadow-none print:bg-transparent print:p-0 whitespace-pre-line">
+                        <div className="mt-3 pl-4 border-l-2 border-virgula-green italic text-slate-700 bg-white p-3 rounded shadow-sm print:shadow-none print:bg-transparent print:p-0 whitespace-pre-line">
                           {data.serviceScope}
                         </div>
                       </div>
 
                       <div>
-                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                        <h2 className="font-bold text-base uppercase mb-2 text-virgula-card flex items-center gap-2">
                           <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
                           Cláusula Segunda – Das Responsabilidades
                         </h2>
@@ -459,7 +456,7 @@ export default function ContractGenerator() {
                       </div>
 
                       <div>
-                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                        <h2 className="font-bold text-base uppercase mb-2 text-virgula-card flex items-center gap-2">
                           <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
                           Cláusula Terceira – Das Obrigações da Contratante
                         </h2>
@@ -484,7 +481,7 @@ export default function ContractGenerator() {
                       </div>
 
                       <div>
-                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                        <h2 className="font-bold text-base uppercase mb-2 text-virgula-card flex items-center gap-2">
                           <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
                           Cláusula Quarta – Da Carta de Responsabilidade
                         </h2>
@@ -494,7 +491,7 @@ export default function ContractGenerator() {
                       </div>
 
                       <div>
-                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                        <h2 className="font-bold text-base uppercase mb-2 text-virgula-card flex items-center gap-2">
                           <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
                           Cláusula Quinta – Das Orientações
                         </h2>
@@ -504,7 +501,7 @@ export default function ContractGenerator() {
                       </div>
 
                       <div>
-                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                        <h2 className="font-bold text-base uppercase mb-2 text-virgula-card flex items-center gap-2">
                           <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
                           Cláusula Sexta – Da Entrega de Documentos
                         </h2>
@@ -517,8 +514,8 @@ export default function ContractGenerator() {
                         </p>
                       </div>
 
-                      <div className="bg-slate-50 p-6 rounded-lg border-l-4 border-virgula-card print:bg-transparent print:p-0 print:border-none">
-                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                      <div className="bg-slate-50 p-5 rounded-lg border-l-4 border-virgula-card print:bg-transparent print:p-0 print:border-none">
+                        <h2 className="font-bold text-base uppercase mb-2 text-virgula-card flex items-center gap-2">
                           <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
                           Cláusula Sétima – Dos Honorários
                         </h2>
@@ -532,7 +529,7 @@ export default function ContractGenerator() {
                       </div>
 
                       <div>
-                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                        <h2 className="font-bold text-base uppercase mb-2 text-virgula-card flex items-center gap-2">
                           <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
                           Cláusula Oitava – Do 13º Honorário
                         </h2>
@@ -540,7 +537,7 @@ export default function ContractGenerator() {
                       </div>
 
                       <div>
-                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                        <h2 className="font-bold text-base uppercase mb-2 text-virgula-card flex items-center gap-2">
                           <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
                           Cláusula Nona – Dos Serviços Extraordinários
                         </h2>
@@ -550,7 +547,7 @@ export default function ContractGenerator() {
                       </div>
 
                       <div>
-                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                        <h2 className="font-bold text-base uppercase mb-2 text-virgula-card flex items-center gap-2">
                           <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
                           Cláusula Décima – Da Rescisão
                         </h2>
@@ -560,7 +557,7 @@ export default function ContractGenerator() {
                       </div>
 
                       <div>
-                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                        <h2 className="font-bold text-base uppercase mb-2 text-virgula-card flex items-center gap-2">
                           <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
                           Cláusula Décima Primeira – Do Prazo
                         </h2>
@@ -582,7 +579,7 @@ export default function ContractGenerator() {
                       </div>
 
                       <div>
-                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                        <h2 className="font-bold text-base uppercase mb-2 text-virgula-card flex items-center gap-2">
                           <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
                           Cláusula Décima Segunda – Do Foro
                         </h2>
@@ -595,11 +592,11 @@ export default function ContractGenerator() {
                         </p>
                       </div>
 
-                      <p className="text-right mt-12 mb-20 italic text-slate-600">
+                      <p className="text-right mt-12 mb-16 italic text-slate-600">
                         {data.city}, {new Date().toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' })}.
                       </p>
 
-                      <div className="grid grid-cols-2 gap-12 mt-20 break-inside-avoid">
+                      <div className="grid grid-cols-2 gap-12 mt-16 break-inside-avoid">
                         <div className="text-center">
                           <div className="border-t-2 border-virgula-card pt-2 mb-1 mx-4">
                             {data.clientRepresentative || "CONTRATANTE"}
@@ -617,29 +614,16 @@ export default function ContractGenerator() {
                         </div>
                       </div>
                     </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
 
-            {/* ANEXO I - Page Break */}
-            <div className="break-before-page relative z-10">
-              <table className="w-full border-collapse">
-                <thead className="table-header-group">
-                  <tr>
-                    <th className="h-[35mm] print:h-[40mm] border-none p-0"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td className="p-[20mm] pl-[30mm] pt-0 border-none align-top">
-                      <div className="text-center mb-12">
-                        <h1 className="font-bold text-2xl uppercase tracking-wide text-virgula-card border-b-4 border-virgula-green pb-4 inline-block">
+                    {/* ANEXO I - Page Break */}
+                    <div className="break-before-page mt-12 pt-8 relative z-10">
+                      <div className="text-center mb-8">
+                        <h1 className="font-bold text-xl uppercase tracking-wide text-virgula-card border-b-2 border-virgula-green pb-2 inline-block">
                           ANEXO I - Prazos e Obrigações
                         </h1>
                       </div>
                       
-                      <p className="mb-8 text-lg">
+                      <p className="mb-6 text-base">
                         Relação de documentos e informações a serem fornecidos pela CONTRATANTE à CONTRATADA, com seus respectivos prazos:
                       </p>
 
@@ -658,11 +642,11 @@ export default function ContractGenerator() {
                           <div className="p-6 text-center italic text-slate-500">Nenhuma obrigação listada.</div>
                         )}
                       </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </motion.div>
         </div>
       </main>
