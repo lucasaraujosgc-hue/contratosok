@@ -395,244 +395,273 @@ export default function ContractGenerator() {
             ref={printRef}
           >
             {/* Sidebar Decoration */}
-            <div className="absolute left-0 top-0 bottom-0 w-2 bg-virgula-green print:w-2 print:bg-virgula-green h-full"></div>
-            <div className="absolute left-2 top-0 bottom-0 w-1 bg-virgula-card print:w-1 print:bg-virgula-card h-full"></div>
+            <div className="absolute left-0 top-0 bottom-0 w-2 bg-virgula-green print:w-2 print:bg-virgula-green h-full z-0"></div>
+            <div className="absolute left-2 top-0 bottom-0 w-1 bg-virgula-card print:w-1 print:bg-virgula-card h-full z-0"></div>
 
-            <div className="p-[20mm] pl-[30mm]">
-              <div className="text-center mb-12 relative">
-                <div className="absolute top-0 right-0 opacity-10">
-                  <Calculator size={64} className="text-virgula-card" />
+            {/* Repeating Header (Fixed in Print) */}
+            <div className="absolute top-[15mm] right-[20mm] print:fixed print:top-[15mm] print:right-[20mm] z-50">
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-virgula-card rounded-xl border border-slate-200 flex items-center justify-center text-virgula-green shadow-sm">
+                  <Calculator size={30} />
                 </div>
-                <h1 className="font-bold text-2xl uppercase tracking-wide text-virgula-card border-b-4 border-virgula-green pb-4 inline-block">
-                  Contrato de Prestação de Serviços Contábeis
-                </h1>
-              </div>
-
-              <div className="space-y-8">
-              <p>
-                Pelo presente instrumento particular de Contrato de Prestação de Serviços Contábeis, de um lado <strong>{data.clientName || "_______________________"}</strong>, inscrita no CNPJ/CPF sob o nº {data.clientCNPJ || "_______________________"}, com sede em {data.clientAddress || "_______________________"}, doravante denominada <strong>CONTRATANTE</strong>, neste ato representada por seu representante legal, <strong>{data.clientRepresentative || "_______________________"}</strong>, portador do CPF/CNPJ nº {data.clientRepDoc || "_______________________"}.
-              </p>
-              
-              <p>
-                E, de outro lado, o profissional da Contabilidade <strong>{selectedContractor.name}</strong>, {selectedContractor.doc}, registrado no {selectedContractor.registry}, sediado na {selectedContractor.address}, doravante denominado(a) <strong>CONTRATADO(A)</strong>, mediante as cláusulas e condições seguintes, tem justo e contratado que se segue:
-              </p>
-
-              <div className="bg-slate-50 p-6 rounded-lg border-l-4 border-virgula-card print:bg-transparent print:p-0 print:border-none">
-                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
-                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
-                  Cláusula Primeira – Do Objeto
-                </h2>
-                <p>
-                  O profissional contratado obriga-se a prestar seus serviços profissionais ao contratante, nas seguintes áreas:
-                </p>
-                <div className="mt-4 pl-4 border-l-2 border-virgula-green italic text-slate-700 bg-white p-4 rounded shadow-sm print:shadow-none print:bg-transparent print:p-0 whitespace-pre-line">
-                  {data.serviceScope}
+                <div className="flex flex-col justify-center">
+                  <span className="text-3xl font-bold text-virgula-card tracking-tight leading-none mb-0.5">Vírgula</span>
+                  <span className="text-base font-semibold text-virgula-green tracking-widest leading-none uppercase">Contábil</span>
                 </div>
               </div>
-
-              <div>
-                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
-                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
-                  Cláusula Segunda – Das Responsabilidades
-                </h2>
-                <p>
-                  O(A) contratado(a) assume inteira responsabilidade pelos serviços técnicos a que se obrigou, assim como pelas orientações que prestar.
-                </p>
-              </div>
-
-              <div>
-                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
-                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
-                  Cláusula Terceira – Das Obrigações da Contratante
-                </h2>
-                <p>
-                  A CONTRATANTE obriga-se a fornecer à CONTRATADA toda a documentação e informações necessárias para a execução dos serviços, dentro dos prazos estabelecidos, responsabilizando-se pela veracidade e legalidade dos documentos entregues.
-                </p>
-                <p className="mt-2">
-                  Os prazos para entrega de documentos e informações constam no <strong>ANEXO I</strong> deste contrato.
-                </p>
-                <p className="mt-2 font-bold text-xs uppercase">Parágrafo Primeiro:</p>
-                <p>
-                  Responsabilizar-se-á o(a) contratado(a) por todos os documentos a ele(a)
-entregue pelo(a) contratante, enquanto permanecerem sob sua guarda para a consecução dos serviços
-pactuados, salvo comprovados casos fortuitos e motivos de força maior
-                </p>
-                <p className="mt-2 font-bold text-xs uppercase">Parágrafo Segundo:</p>
-                <p>
-                  O(A) Contratante tem ciência da Lei 9.613/98, alterada pela Lei 12.683/2012,
-especificamente no que trata da lavagem de dinheiro, regulamentada pela Resolução CFC n.º 1.345/13
-do Conselho Federal de Contabilidade.
-                </p>
-              </div>
-
-              <div>
-                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
-                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
-                  Cláusula Quarta – Da Carta de Responsabilidade
-                </h2>
-                <p>
-                  O(A) contratante(a) se obriga, antes do encerramento do exercício social, a fornecer ao contratado(a) a Carta de Responsabilidade da Administração.
-                </p>
-              </div>
-
-              <div>
-                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
-                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
-                  Cláusula Quinta – Das Orientações
-                </h2>
-                <p>
-                  As orientações dadas pelo(a) contratado(a) deverão ser seguidas pela contratante, eximindo-se o(a) primeiro(a) das consequências da não observância do seu cumprimento.
-                </p>
-              </div>
-
-              <div>
-                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
-                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
-                  Cláusula Sexta – Da Entrega de Documentos
-                </h2>
-                <p>
-                  O(A) contratado(a) se obriga a entregar ao contratante, mediante protocolo, com tempo hábil, os balancetes, o Balanço Patrimonial e as demais demonstrações contábeis, documentos necessários para que este efetue os devidos pagamentos e recolhimentos obrigatórios, bem como comprovante de entrega das obrigações acessórias.
-                </p>
-                <p className="mt-2 font-bold text-xs uppercase">Parágrafo Único:</p>
-                <p>
-                  As multas decorrentes da entrega fora do prazo contratado das obrigações previstas no caput deste artigo, ou que forem decorrentes da imperfeição ou inexecução dos serviços por parte do(a) contratado(a), serão de sua responsabilidade.
-                </p>
-              </div>
-
-              <div className="bg-slate-50 p-6 rounded-lg border-l-4 border-virgula-card print:bg-transparent print:p-0 print:border-none">
-                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
-                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
-                  Cláusula Sétima – Dos Honorários
-                </h2>
-                <p>{formatClause(data.clause7)}</p>
-                
-                <p className="mt-2 font-bold text-xs uppercase text-virgula-card/80">Parágrafo Primeiro:</p>
-                <p>{data.clause7Para1}</p>
-                
-                <p className="mt-2 font-bold text-xs uppercase text-virgula-card/80">Parágrafo Segundo:</p>
-                <p>{data.clause7Para2}</p>
-              </div>
-
-              <div>
-                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
-                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
-                  Cláusula Oitava – Do 13º Honorário
-                </h2>
-                <p>{data.clause8}</p>
-              </div>
-
-              <div>
-                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
-                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
-                  Cláusula Nona – Dos Serviços Extraordinários
-                </h2>
-                <p>
-                  Todos os serviços extraordinários não contratados que forem necessários ou solicitados pelo contratante serão cobrados à parte, com preços previamente convencionados.
-                </p>
-              </div>
-
-              <div>
-                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
-                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
-                  Cláusula Décima – Da Rescisão
-                </h2>
-                <p>
-                  No caso de atraso no pagamento dos honorários, incidirá multa de 10%. Persistindo o atraso, por período de 3 (três) meses, o contratado(a) poderá rescindir o contrato, por motivo justificado, eximindo-se de qualquer responsabilidade a partir da data da rescisão.
-                </p>
-              </div>
-
-              <div>
-                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
-                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
-                  Cláusula Décima Primeira – Do Prazo
-                </h2>
-                <p>
-                  Este instrumento é feito por tempo indeterminado, iniciando-se em <strong>{new Date(data.startDate).toLocaleDateString('pt-BR')}</strong>, podendo ser rescindido em qualquer época, por qualquer uma das partes, mediante Aviso Prévio de 30 (trinta) dias, por escrito.
-                </p>
-                <p className="mt-2 font-bold text-xs uppercase">Parágrafo Primeiro:</p>
-                <p>
-                  A parte que não comunicar por escrito a intenção de rescindir o contrato ou efetuá-la de forma sumária fica obrigada ao pagamento de multa compensatória no valor de uma parcela mensal dos honorários vigentes à época.
-                </p>
-                <p className="mt-2 font-bold text-xs uppercase">Parágrafo Segundo:</p>
-                <p>
-                  O rompimento do vínculo contratual obriga as partes à celebração de distrato com a especificação da cessação das responsabilidades dos contratantes.
-                </p>
-                <p className="mt-2 font-bold text-xs uppercase">Parágrafo Terceiro:</p>
-                <p>
-                  O(A) contratado(a) obriga-se a entregar os documentos, Livros Contábeis e Fiscais e/ou arquivos eletrônicos ao contratante ou a outro profissional da Contabilidade por ele(a) indicado(a), após a assinatura do distrato entre as partes.
-                </p>
-              </div>
-
-              <div>
-                <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
-                  <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
-                  Cláusula Décima Segunda – Do Foro
-                </h2>
-                <p>
-                  Os casos omissos serão resolvidos de comum acordo.
-                </p>
-                <p className="mt-2 font-bold text-xs uppercase text-virgula-card/80">Parágrafo Único:</p>
-                <p>
-                  Em caso de impasse, as partes submeterão a solução do conflito a procedimento arbitral nos termos da Lei n.º 9.307/96.
-                </p>
-              </div>
-
-              <p className="text-right mt-12 mb-20 italic text-slate-600">
-                {data.city}, {new Date().toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' })}.
-              </p>
-
-              <div className="grid grid-cols-2 gap-12 mt-20 break-inside-avoid">
-                <div className="text-center">
-                  <div className="border-t-2 border-virgula-card pt-2 mb-1 mx-4">
-                    {data.clientRepresentative || "CONTRATANTE"}
-                  </div>
-                  <div className="text-xs uppercase font-bold text-virgula-card">
-                    {data.clientName}<br/>
-                    Rep. Legal
-                  </div>
-                </div>
-                <div className="text-center">
-                  <div className="border-t-2 border-virgula-card pt-2 mb-1 mx-4">
-                    {selectedContractor.name}
-                  </div>
-                  <div className="text-xs uppercase font-bold text-virgula-card">Contratado</div>
-                </div>
-              </div>
-
-              {/* ANEXO I - Page Break */}
-              <div className="break-before-page mt-20 relative">
-                {/* Sidebar Decoration for Annex */}
-                <div className="absolute -left-[30mm] -top-[20mm] -bottom-[20mm] w-2 bg-virgula-green h-[calc(100%+40mm)] print:h-[297mm] print:-top-[20mm]"></div>
-                <div className="absolute -left-[28mm] -top-[20mm] -bottom-[20mm] w-1 bg-virgula-card h-[calc(100%+40mm)] print:h-[297mm] print:-top-[20mm]"></div>
-
-                <div className="text-center mb-12">
-                  <h1 className="font-bold text-2xl uppercase tracking-wide text-virgula-card border-b-4 border-virgula-green pb-4 inline-block">
-                    ANEXO I - Prazos e Obrigações
-                  </h1>
-                </div>
-                
-                <p className="mb-8 text-lg">
-                  Relação de documentos e informações a serem fornecidos pela CONTRATANTE à CONTRATADA, com seus respectivos prazos:
-                </p>
-
-                <div className="border-2 border-virgula-card rounded-lg overflow-hidden">
-                  <div className="grid grid-cols-3 bg-virgula-card text-white font-bold text-sm print:bg-virgula-card print:text-white">
-                    <div className="col-span-2 p-3 border-r border-virgula-green">Obrigação / Documento</div>
-                    <div className="p-3">Prazo de Entrega</div>
-                  </div>
-                  {data.obligations.map((obs) => (
-                    <div key={obs.id} className="grid grid-cols-3 border-b border-slate-200 last:border-0 text-sm hover:bg-slate-50 transition-colors">
-                      <div className="col-span-2 p-3 border-r border-slate-200">{obs.description}</div>
-                      <div className="p-3 font-medium text-virgula-card">{obs.deadline}</div>
-                    </div>
-                  ))}
-                  {data.obligations.length === 0 && (
-                    <div className="p-6 text-center italic text-slate-500">Nenhuma obrigação listada.</div>
-                  )}
-                </div>
-              </div>
-
             </div>
+
+            <table className="w-full border-collapse relative z-10">
+              <thead className="table-header-group">
+                <tr>
+                  <th className="h-[35mm] print:h-[40mm] border-none p-0"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="p-[20mm] pl-[30mm] pt-0 border-none align-top">
+                    <div className="text-center mb-12 relative">
+                      <h1 className="font-bold text-2xl uppercase tracking-wide text-virgula-card border-b-4 border-virgula-green pb-4 inline-block">
+                        Contrato de Prestação de Serviços Contábeis
+                      </h1>
+                    </div>
+
+                    <div className="space-y-8">
+                      <p>
+                        Pelo presente instrumento particular de Contrato de Prestação de Serviços Contábeis, de um lado <strong>{data.clientName || "_______________________"}</strong>, inscrita no CNPJ/CPF sob o nº {data.clientCNPJ || "_______________________"}, com sede em {data.clientAddress || "_______________________"}, doravante denominada <strong>CONTRATANTE</strong>, neste ato representada por seu representante legal, <strong>{data.clientRepresentative || "_______________________"}</strong>, portador do CPF/CNPJ nº {data.clientRepDoc || "_______________________"}.
+                      </p>
+                      
+                      <p>
+                        E, de outro lado, o profissional da Contabilidade <strong>{selectedContractor.name}</strong>, {selectedContractor.doc}, registrado no {selectedContractor.registry}, sediado na {selectedContractor.address}, doravante denominado(a) <strong>CONTRATADO(A)</strong>, mediante as cláusulas e condições seguintes, tem justo e contratado que se segue:
+                      </p>
+
+                      <div className="bg-slate-50 p-6 rounded-lg border-l-4 border-virgula-card print:bg-transparent print:p-0 print:border-none">
+                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                          <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                          Cláusula Primeira – Do Objeto
+                        </h2>
+                        <p>
+                          O profissional contratado obriga-se a prestar seus serviços profissionais ao contratante, nas seguintes áreas:
+                        </p>
+                        <div className="mt-4 pl-4 border-l-2 border-virgula-green italic text-slate-700 bg-white p-4 rounded shadow-sm print:shadow-none print:bg-transparent print:p-0 whitespace-pre-line">
+                          {data.serviceScope}
+                        </div>
+                      </div>
+
+                      <div>
+                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                          <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                          Cláusula Segunda – Das Responsabilidades
+                        </h2>
+                        <p>
+                          O(A) contratado(a) assume inteira responsabilidade pelos serviços técnicos a que se obrigou, assim como pelas orientações que prestar.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                          <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                          Cláusula Terceira – Das Obrigações da Contratante
+                        </h2>
+                        <p>
+                          A CONTRATANTE obriga-se a fornecer à CONTRATADA toda a documentação e informações necessárias para a execução dos serviços, dentro dos prazos estabelecidos, responsabilizando-se pela veracidade e legalidade dos documentos entregues.
+                        </p>
+                        <p className="mt-2">
+                          Os prazos para entrega de documentos e informações constam no <strong>ANEXO I</strong> deste contrato.
+                        </p>
+                        <p className="mt-2 font-bold text-xs uppercase">Parágrafo Primeiro:</p>
+                        <p>
+                          Responsabilizar-se-á o(a) contratado(a) por todos os documentos a ele(a)
+        entregue pelo(a) contratante, enquanto permanecerem sob sua guarda para a consecução dos serviços
+        pactuados, salvo comprovados casos fortuitos e motivos de força maior
+                        </p>
+                        <p className="mt-2 font-bold text-xs uppercase">Parágrafo Segundo:</p>
+                        <p>
+                          O(A) Contratante tem ciência da Lei 9.613/98, alterada pela Lei 12.683/2012,
+        especificamente no que trata da lavagem de dinheiro, regulamentada pela Resolução CFC n.º 1.345/13
+        do Conselho Federal de Contabilidade.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                          <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                          Cláusula Quarta – Da Carta de Responsabilidade
+                        </h2>
+                        <p>
+                          O(A) contratante(a) se obriga, antes do encerramento do exercício social, a fornecer ao contratado(a) a Carta de Responsabilidade da Administração.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                          <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                          Cláusula Quinta – Das Orientações
+                        </h2>
+                        <p>
+                          As orientações dadas pelo(a) contratado(a) deverão ser seguidas pela contratante, eximindo-se o(a) primeiro(a) das consequências da não observância do seu cumprimento.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                          <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                          Cláusula Sexta – Da Entrega de Documentos
+                        </h2>
+                        <p>
+                          O(A) contratado(a) se obriga a entregar ao contratante, mediante protocolo, com tempo hábil, os balancetes, o Balanço Patrimonial e as demais demonstrações contábeis, documentos necessários para que este efetue os devidos pagamentos e recolhimentos obrigatórios, bem como comprovante de entrega das obrigações acessórias.
+                        </p>
+                        <p className="mt-2 font-bold text-xs uppercase">Parágrafo Único:</p>
+                        <p>
+                          As multas decorrentes da entrega fora do prazo contratado das obrigações previstas no caput deste artigo, ou que forem decorrentes da imperfeição ou inexecução dos serviços por parte do(a) contratado(a), serão de sua responsabilidade.
+                        </p>
+                      </div>
+
+                      <div className="bg-slate-50 p-6 rounded-lg border-l-4 border-virgula-card print:bg-transparent print:p-0 print:border-none">
+                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                          <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                          Cláusula Sétima – Dos Honorários
+                        </h2>
+                        <p>{formatClause(data.clause7)}</p>
+                        
+                        <p className="mt-2 font-bold text-xs uppercase text-virgula-card/80">Parágrafo Primeiro:</p>
+                        <p>{data.clause7Para1}</p>
+                        
+                        <p className="mt-2 font-bold text-xs uppercase text-virgula-card/80">Parágrafo Segundo:</p>
+                        <p>{data.clause7Para2}</p>
+                      </div>
+
+                      <div>
+                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                          <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                          Cláusula Oitava – Do 13º Honorário
+                        </h2>
+                        <p>{data.clause8}</p>
+                      </div>
+
+                      <div>
+                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                          <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                          Cláusula Nona – Dos Serviços Extraordinários
+                        </h2>
+                        <p>
+                          Todos os serviços extraordinários não contratados que forem necessários ou solicitados pelo contratante serão cobrados à parte, com preços previamente convencionados.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                          <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                          Cláusula Décima – Da Rescisão
+                        </h2>
+                        <p>
+                          No caso de atraso no pagamento dos honorários, incidirá multa de 10%. Persistindo o atraso, por período de 3 (três) meses, o contratado(a) poderá rescindir o contrato, por motivo justificado, eximindo-se de qualquer responsabilidade a partir da data da rescisão.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                          <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                          Cláusula Décima Primeira – Do Prazo
+                        </h2>
+                        <p>
+                          Este instrumento é feito por tempo indeterminado, iniciando-se em <strong>{new Date(data.startDate).toLocaleDateString('pt-BR')}</strong>, podendo ser rescindido em qualquer época, por qualquer uma das partes, mediante Aviso Prévio de 30 (trinta) dias, por escrito.
+                        </p>
+                        <p className="mt-2 font-bold text-xs uppercase">Parágrafo Primeiro:</p>
+                        <p>
+                          A parte que não comunicar por escrito a intenção de rescindir o contrato ou efetuá-la de forma sumária fica obrigada ao pagamento de multa compensatória no valor de uma parcela mensal dos honorários vigentes à época.
+                        </p>
+                        <p className="mt-2 font-bold text-xs uppercase">Parágrafo Segundo:</p>
+                        <p>
+                          O rompimento do vínculo contratual obriga as partes à celebração de distrato com a especificação da cessação das responsabilidades dos contratantes.
+                        </p>
+                        <p className="mt-2 font-bold text-xs uppercase">Parágrafo Terceiro:</p>
+                        <p>
+                          O(A) contratado(a) obriga-se a entregar os documentos, Livros Contábeis e Fiscais e/ou arquivos eletrônicos ao contratante ou a outro profissional da Contabilidade por ele(a) indicado(a), após a assinatura do distrato entre as partes.
+                        </p>
+                      </div>
+
+                      <div>
+                        <h2 className="font-bold text-base uppercase mb-3 text-virgula-card flex items-center gap-2">
+                          <span className="w-2 h-2 bg-virgula-green rounded-full inline-block"></span>
+                          Cláusula Décima Segunda – Do Foro
+                        </h2>
+                        <p>
+                          Os casos omissos serão resolvidos de comum acordo.
+                        </p>
+                        <p className="mt-2 font-bold text-xs uppercase text-virgula-card/80">Parágrafo Único:</p>
+                        <p>
+                          Em caso de impasse, as partes submeterão a solução do conflito a procedimento arbitral nos termos da Lei n.º 9.307/96.
+                        </p>
+                      </div>
+
+                      <p className="text-right mt-12 mb-20 italic text-slate-600">
+                        {data.city}, {new Date().toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' })}.
+                      </p>
+
+                      <div className="grid grid-cols-2 gap-12 mt-20 break-inside-avoid">
+                        <div className="text-center">
+                          <div className="border-t-2 border-virgula-card pt-2 mb-1 mx-4">
+                            {data.clientRepresentative || "CONTRATANTE"}
+                          </div>
+                          <div className="text-xs uppercase font-bold text-virgula-card">
+                            {data.clientName}<br/>
+                            Rep. Legal
+                          </div>
+                        </div>
+                        <div className="text-center">
+                          <div className="border-t-2 border-virgula-card pt-2 mb-1 mx-4">
+                            {selectedContractor.name}
+                          </div>
+                          <div className="text-xs uppercase font-bold text-virgula-card">Contratado</div>
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            {/* ANEXO I - Page Break */}
+            <div className="break-before-page relative z-10">
+              <table className="w-full border-collapse">
+                <thead className="table-header-group">
+                  <tr>
+                    <th className="h-[35mm] print:h-[40mm] border-none p-0"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="p-[20mm] pl-[30mm] pt-0 border-none align-top">
+                      <div className="text-center mb-12">
+                        <h1 className="font-bold text-2xl uppercase tracking-wide text-virgula-card border-b-4 border-virgula-green pb-4 inline-block">
+                          ANEXO I - Prazos e Obrigações
+                        </h1>
+                      </div>
+                      
+                      <p className="mb-8 text-lg">
+                        Relação de documentos e informações a serem fornecidos pela CONTRATANTE à CONTRATADA, com seus respectivos prazos:
+                      </p>
+
+                      <div className="border-2 border-virgula-card rounded-lg overflow-hidden">
+                        <div className="grid grid-cols-3 bg-virgula-card text-white font-bold text-sm print:bg-virgula-card print:text-white">
+                          <div className="col-span-2 p-3 border-r border-virgula-green">Obrigação / Documento</div>
+                          <div className="p-3">Prazo de Entrega</div>
+                        </div>
+                        {data.obligations.map((obs) => (
+                          <div key={obs.id} className="grid grid-cols-3 border-b border-slate-200 last:border-0 text-sm hover:bg-slate-50 transition-colors">
+                            <div className="col-span-2 p-3 border-r border-slate-200">{obs.description}</div>
+                            <div className="p-3 font-medium text-virgula-card">{obs.deadline}</div>
+                          </div>
+                        ))}
+                        {data.obligations.length === 0 && (
+                          <div className="p-6 text-center italic text-slate-500">Nenhuma obrigação listada.</div>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </motion.div>
         </div>
