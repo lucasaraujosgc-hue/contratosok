@@ -60,8 +60,8 @@ const CONTRACTOR_PROFILES: ContractorProfile[] = [
     id: 'virgula',
     name: 'VIRGULA CONTABIL LTDA',
     doc: 'CNPJ nº 52.613.515/0001-60',
-    registry: 'CRC BA-046968/O',
-    address: 'Rua José Bonifacio, Centro, CEP 44.330-000 São Gonçalo dos Campos / BA',
+    registry: 'CRC BA-9839/O',
+    address: 'Rua José Bonifacio, nº 4, Centro, CEP 44.330-000 São Gonçalo dos Campos / BA',
     type: 'PJ'
   }
 ];
