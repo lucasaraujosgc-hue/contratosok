@@ -410,12 +410,12 @@ export default function ContractGenerator() {
         </aside>
 
         {/* Preview Area */}
-        <div className="flex-1 bg-slate-100/50 p-4 sm:p-8 overflow-y-auto print:p-0 print:bg-white print:overflow-visible custom-scrollbar">
+        <div className="flex-1 bg-slate-100/50 p-4 sm:p-8 overflow-y-auto print:p-0 print:overflow-visible custom-scrollbar">
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4 }}
-            className="max-w-[210mm] mx-auto bg-card shadow-xl print:shadow-none print:max-w-none min-h-[297mm] text-justify text-[10pt] leading-normal font-sans text-foreground border border-border print:border-none relative overflow-hidden print:overflow-visible" 
+            className="max-w-[210mm] mx-auto bg-card shadow-xl print:shadow-none print:max-w-none print:w-full print:m-0 min-h-[297mm] print:min-h-screen text-justify text-[10pt] leading-normal font-sans text-foreground border border-border print:border-none relative overflow-hidden print:overflow-visible print:bg-card" 
             ref={printRef}
             style={{ WebkitPrintColorAdjust: 'exact', printColorAdjust: 'exact' }}
           >
